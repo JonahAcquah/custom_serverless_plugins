@@ -4,11 +4,13 @@ class CustomPlugin {
       this.options = options;
 
       this.hooks = {
-        'before:package:createDeploymentArtifacts': this.beforePackage.bind(this)
+        'before:package:createDeploymentArtifacts': () => {
+          this.printActions()
+        }
       }
   }
 
-  beforePackage() {
+  printActions() {
       console.log('provider object....')
       console.log(this.serverless.service.provider)
       
